@@ -12,7 +12,7 @@ import Icon                 from '../Icon.jsx';
 import ShareDialog          from '../../containers/ShareDialog.jsx';
 import LoginDialog          from '../../containers/LoginDialog.jsx';
 import AppBarWithBackground from '../AppBarWithBackground.jsx';
-import GoogleAd             from '../../containers/GoogleAd.jsx'
+import GoogleAd             from '../../containers/GoogleAd.jsx';
 
 import { sprintf } from '../../utils';
 
@@ -393,6 +393,8 @@ export default class ActivationPage extends React.Component {
             'ActivationPage--embedded' : isEmbedded
         });
 
+        console.log(activation.author);
+
         return (
             <div className={classes}>
                 <ShareDialog
@@ -412,7 +414,7 @@ export default class ActivationPage extends React.Component {
                 />
 
                 <AppBarWithBackground
-                    backgroundURL    = {activation.backgroundURL}
+                    backgroundURL    = {activation.author.backgroundURL}
                     displayRightMenu = {!isEmbedded}
                     rightIconName    = 'arrow_back'
                     onRightIconClick = {onGoBack}
