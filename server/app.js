@@ -10,7 +10,8 @@ import escapeHTML                from 'lodash/string/escape';
 import { fetchComponentsData,
          getMetaDataFromState,
          makeRedirectUrl,
-         detectLocale } from './utils';
+         detectLocale,
+         isBrowserSupported } from './utils';
 
 import routes         from '../shared/routes.jsx';
 import configureStore from '../shared/store/configureStore';
@@ -49,6 +50,12 @@ app.use((req, res) => {
         const redirectUrl = makeRedirectUrl({ originalUrl: req.url });
 
         return res.redirect(302, redirectUrl);
+    }
+
+    if (!isBrowserSupported()) {
+        const lang = req.headers['accept-language'].substr(0, 2).toLowerCase();
+
+        res.redirect(302, `/unsupported/${lang}.html`);
     }
 
     const locale = detectLocale(req);

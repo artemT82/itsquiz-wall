@@ -1,6 +1,7 @@
 import Promise     from 'bluebird';
 import geoip       from 'geoip-lite';
 import strformat   from 'strformat';
+import bowser      from 'bowser';
 
 import clientConfig            from '../etc/client-config.json';
 import { getSupportedLocales } from '../shared/utils';
@@ -110,4 +111,8 @@ export function detectLocale(req) {
         RU: 'ru',
         TR: 'tr'
     }[country] || 'en';
+}
+
+export function isBrowserSupported() {
+    return !(bowser.msie || bowser.msedge);
 }

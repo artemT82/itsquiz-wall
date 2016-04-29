@@ -176,7 +176,7 @@ class ActivationPageContainer extends Component {
             <ActivationPage
                 activation         = {activation}
                 authorActivations  = {authorActivations}
-                similarActivations  = {similarActivations}
+                similarActivations = {similarActivations}
                 sharingLink        = {sharingLink}
                 isLoading          = {isLoading}
                 isEmbedded         = {Boolean(embed)}
